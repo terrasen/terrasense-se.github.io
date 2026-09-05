@@ -6,50 +6,23 @@
 <style>
   body { margin:0; background:#888; display:flex; flex-direction:column; gap:20px; padding:20px; }
   .tile { background:#faf6ee; display:flex; align-items:center; justify-content:center; flex:none; }
-  #fav96 { width:96px; height:96px; }
-  #fav96 svg { width:88px; height:88px; }
-  #touch180 { width:180px; height:180px; }
-  #touch180 svg { width:140px; height:140px; }
-  #m192 { width:192px; height:192px; }
-  #m192 svg { width:150px; height:150px; }
-  #m512 { width:512px; height:512px; }
-  #m512 svg { width:400px; height:400px; }
   #og { width:1200px; height:630px; flex-direction:column; gap:26px; }
-  #og svg { width:200px; height:200px; }
+  #og img { width:auto; height:220px; }
   #og .word { font-family:'Fraunces',serif; font-size:64px; font-weight:500; color:#2f4f4f; letter-spacing:.04em; }
   #og .sub { font-family:'Source Sans 3',sans-serif; font-size:22px; font-weight:600; color:#8a6d3b; letter-spacing:.22em; text-transform:uppercase; margin-top:-14px; }
 </style>
 </head>
 <body>
-<template id="logo">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <path d="M32 18 C31.5 14.5 30 12.5 27.5 11.5" fill="none" stroke="#3e7a4e" stroke-width="2.6" stroke-linecap="round"/>
-  <path d="M34 13 C36 7.5 44 5.5 49 9 C47 15 39 17 34 13 Z" fill="#3e7a4e"/>
-  <path d="M35.5 12.5 C39 11 43 9.5 46.5 9.5" fill="none" stroke="#faf6ee" stroke-width="0.9" stroke-linecap="round" opacity="0.7"/>
-  <path d="M32 19 C26 13 14 15 11 26 C8 37 16 52 24 56 C28 58 36 58 40 56 C48 52 56 37 53 26 C50 15 38 13 32 19 Z" fill="#3e7a4e"/>
-  <path d="M32 30 C29 25 22 26 21.5 32 C21 38 27 43 32 47 C37 43 43 38 42.5 32 C42 26 35 25 32 30 Z" fill="#faf6ee"/>
-  <ellipse cx="28.6" cy="35.8" rx="1.9" ry="3.1" fill="#2f4f4f" transform="rotate(-8 28.6 35.8)"/>
-  <ellipse cx="35.4" cy="35.8" rx="1.9" ry="3.1" fill="#2f4f4f" transform="rotate(8 35.4 35.8)"/>
-  <path d="M6 38 C10 52 28 61 46 55 C52 53 56.5 48.5 58.5 42" fill="none" stroke="#9db98a" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="59.5" cy="37.5" r="1.9" fill="#9db98a"/>
-</svg>
-</template>
-  <div class="tile" id="fav96"></div>
-  <div class="tile" id="touch180"></div>
-  <div class="tile" id="m192"></div>
-  <div class="tile" id="m512"></div>
+  <!--
+    OG image tile. Favicons/touch icons are generated from
+    assets/images/source/terrasense-logo.png with Pillow (see AGENTS.md).
+    Render: serve repo root (python3 -m http.server), open /tmp/raster.html,
+    screenshot #og at 1200x630 → assets/images/og-image.png
+  -->
   <div class="tile" id="og">
-    <div class="word" style="display:none"></div>
+    <img src="../assets/images/source/terrasense-logo.png" alt="">
+    <div class="word">Terra Sense</div>
+    <div class="sub">Stöd &amp; Behandling · Med barnets behov i centrum</div>
   </div>
-<script>
-const tpl = document.getElementById('logo');
-['fav96','touch180','m192','m512'].forEach(id => {
-  document.getElementById(id).appendChild(tpl.content.cloneNode(true));
-});
-const og = document.getElementById('og');
-og.innerHTML = '';
-og.appendChild(tpl.content.cloneNode(true));
-og.insertAdjacentHTML('beforeend', '<div class="word">Terra Sense</div><div class="sub">Stöd &amp; Behandling · Med barnets behov i centrum</div>');
-</script>
 </body>
 </html>

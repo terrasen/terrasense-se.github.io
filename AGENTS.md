@@ -58,10 +58,13 @@ JEKYLL_ENV=production bundle exec jekyll build   # must pass with zero errors be
   pastels, spacing). Class prefix `ts-`.
 - `assets/js/main.js` — reveal animations (IO), footer year, mobile nav.
 - `assets/js/leaves.js` — the leaf engine (see below).
-- `_includes/logo.svg` — inline header logo; `assets/images/logo.svg` +
-  `assets/favicon.svg` are copies. Edit all three together (and regenerate
-  PNG rasters via `tmp/raster.html`: serve tmp/ with `python3 -m http.server`,
-  screenshot tiles with Playwright, `sips -z` to exact sizes).
+- Logo: `assets/images/source/terrasense-logo.png` is the master (three
+  leaves, transparent). Derived files: `assets/images/logo.png` (header,
+  320px), `assets/favicon-96x96.png`, `assets/apple-touch-icon.png`,
+  `assets/web-app-manifest-{192,512}.png` (paper background), and
+  `assets/images/og-image.png`. To regenerate: icons with Pillow (crop alpha
+  bbox, `thumbnail`, center on canvas); OG image by serving the repo root and
+  screenshotting `#og` in `tmp/raster.html` at 1200×630 with Playwright.
 
 ## The Leaf Engine (assets/js/leaves.js)
 

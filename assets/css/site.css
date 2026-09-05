@@ -146,7 +146,7 @@ p { margin: 0 0 var(--space-4); }
   color: var(--ink);
 }
 .ts-brand:hover { text-decoration: none; }
-.ts-brand svg { width: 34px; height: 34px; flex: none; }
+.ts-brand__logo { width: auto; height: 38px; flex: none; }
 .ts-brand__sub {
   display: block;
   font-weight: 600;
