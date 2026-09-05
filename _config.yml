@@ -1,0 +1,53 @@
+title: Terra Sense Stöd & Behandling
+name: Terra Sense Stöd & Behandling
+description: >-
+  Öppenvård som kompletterar socialtjänsten. Hemutredningar enligt BBiC,
+  intensiv familjebehandling i hemmiljö och handledning till familjehem —
+  med barnets behov i centrum. Stockholm, sedan 2014.
+meta_image: /assets/images/og-image.png
+
+# Interim GitHub Pages project URL. At DNS cutover to terrasense.se:
+# set url: https://terrasense.se and baseurl: "" and add a CNAME file.
+url: https://terrasen.github.io
+baseurl: /terrasense-se.github.io
+
+lang: sv
+email: info@terrasense.se
+phone: 076-215 99 19
+org_number: 559047-6130
+invoice_address: Flygarvägen 29, 175 69 Järfälla
+manager: Annahita Holmberg
+timezone: Europe/Stockholm
+permalink: /:title/
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+collections:
+  pages:
+    output: true
+
+exclude:
+  - docs
+  - vendor
+  - tmp
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CLAUDE.md
+
+defaults:
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+kramdown:
+  input: GFM

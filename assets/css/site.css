@@ -1,0 +1,497 @@
+/* ==========================================================================
+   Terra Sense — "Stilla mark" design system
+   ========================================================================== */
+
+:root {
+  /* Palette */
+  --paper: #faf6ee;
+  --paper-warm: #f3ecdd;
+  --ink: #2f4f4f;
+  --ink-soft: #4a5d58;
+  --apple: #3e7a4e;
+  --sage: #9db98a;
+  --amber: #c9a24b;
+  --earth: #8a6d3b;
+  --card: #ffffff;
+  --hairline: rgba(47, 79, 79, 0.10);
+  --hairline-strong: rgba(47, 79, 79, 0.35);
+
+  /* BBiC triangle (variant A) */
+  --bbic-rose: #e5aca6;
+  --bbic-rose-ink: #6b3a34;
+  --bbic-gold: #e0c87e;
+  --bbic-gold-ink: #5f5026;
+  --bbic-green: #aecba0;
+  --bbic-green-ink: #3d5233;
+
+  /* Type */
+  --font-serif: "Fraunces", "Georgia", serif;
+  --font-sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --radius: 14px;
+  --radius-pill: 999px;
+  --shell-max: 1120px;
+}
+
+/* Reset ------------------------------------------------------------------ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+img, svg { max-width: 100%; height: auto; }
+
+a { color: var(--apple); text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 0 0 var(--space-4);
+  color: var(--ink);
+}
+
+p { margin: 0 0 var(--space-4); }
+
+/* Skip link */
+.ts-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 18px;
+  border-radius: 0 0 var(--radius) 0;
+  z-index: 100;
+}
+.ts-skip:focus { left: 0; }
+
+/* Canvas layer ------------------------------------------------------------ */
+
+#leaves {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Everything above the canvas */
+.ts-header, main, .ts-footer { position: relative; z-index: 1; }
+
+/* Shell ------------------------------------------------------------------- */
+
+.ts-shell {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Header ------------------------------------------------------------------ */
+
+.ts-header {
+  border-bottom: 1px solid var(--hairline);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.ts-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-3) var(--space-6);
+  max-width: var(--shell-max);
+  margin: 0 auto;
+}
+
+.ts-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 15px;
+  color: var(--ink);
+}
+.ts-brand:hover { text-decoration: none; }
+.ts-brand svg { width: 34px; height: 34px; flex: none; }
+.ts-brand__sub {
+  display: block;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--earth);
+}
+
+.ts-nav { display: flex; align-items: center; gap: var(--space-5); }
+.ts-nav a {
+  color: var(--ink-soft);
+  font-size: 15px;
+  font-weight: 600;
+}
+.ts-nav a:hover { color: var(--ink); text-decoration: none; }
+
+.ts-nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+/* Chapters ---------------------------------------------------------------- */
+
+.ts-chapter {
+  padding: var(--space-9) 0;
+  position: relative;
+}
+
+/* Tinted bands: painted by the canvas when JS runs; CSS fallback otherwise */
+.ts-chapter--tinted { background: var(--paper-warm); }
+.js-leaves .ts-chapter--tinted { background: transparent; }
+
+.ts-kicker {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  margin-bottom: var(--space-3);
+}
+
+.ts-eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--earth);
+  margin-bottom: var(--space-4);
+}
+
+.ts-title { font-size: clamp(30px, 4.5vw, 44px); }
+h1.ts-title { font-size: clamp(36px, 6vw, 56px); }
+
+.ts-lead {
+  font-size: 19px;
+  color: var(--ink-soft);
+  max-width: 620px;
+}
+
+/* Chapters where a leaf formation lives beside the text */
+.ts-chapter--aside .ts-chapter__text { max-width: 560px; }
+
+/* Breathing interludes: leaf-only space between chapters on narrow screens.
+   Only shown when the leaf engine runs (html.js-leaves) — no empty gaps
+   without JS — and only below the corridor breakpoint. */
+.ts-interlude { display: none; }
+@media (max-width: 900px) {
+  .js-leaves .ts-interlude {
+    display: block;
+    height: 52vh;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Hero -------------------------------------------------------------------- */
+
+.ts-hero {
+  padding: var(--space-10) 0;
+  text-align: center;
+}
+.ts-hero .ts-lead { margin-left: auto; margin-right: auto; }
+
+.ts-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+.ts-hero .ts-actions, .ts-center .ts-actions { justify-content: center; }
+
+.ts-statline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  justify-content: center;
+  margin-top: var(--space-6);
+  font-size: 14px;
+  color: var(--earth);
+}
+
+/* Buttons ------------------------------------------------------------------ */
+
+.ts-btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.ts-btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+.ts-btn--primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.ts-btn--primary:hover { box-shadow: 0 6px 18px rgba(47, 79, 79, 0.25); }
+
+.ts-btn--ghost {
+  border-color: var(--hairline-strong);
+  color: var(--ink);
+  background: transparent;
+}
+.ts-btn--ghost:hover { background: rgba(47, 79, 79, 0.05); }
+
+/* Cards & grids ------------------------------------------------------------ */
+
+.ts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.ts-card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+
+.ts-card h3 { font-size: 20px; margin-bottom: var(--space-2); }
+.ts-card p { font-size: 15px; color: var(--ink-soft); margin-bottom: 0; }
+
+.ts-meta {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--earth);
+  margin-bottom: var(--space-2);
+}
+
+/* Pills -------------------------------------------------------------------- */
+
+.ts-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: 0;
+  margin: var(--space-3) 0 var(--space-5);
+  list-style: none;
+}
+.ts-pill {
+  background: var(--card);
+  border: 1px solid rgba(47, 79, 79, 0.14);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  padding: 6px 14px;
+  color: var(--ink);
+}
+
+/* Split layouts ------------------------------------------------------------ */
+
+.ts-split {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-7);
+  align-items: start;
+  margin-top: var(--space-5);
+}
+
+.ts-about-card { text-align: left; }
+.ts-about-card .ts-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #dce7d2, var(--paper-warm));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--earth);
+  text-align: center;
+  margin-bottom: var(--space-3);
+  overflow: hidden;
+}
+.ts-about-card .ts-photo img { width: 100%; height: 100%; object-fit: cover; }
+.ts-about-card strong { display: block; font-size: 16px; }
+
+/* Blog cards / posts -------------------------------------------------------- */
+
+.ts-post-card { display: block; color: inherit; }
+.ts-post-card:hover { text-decoration: none; border-color: var(--hairline-strong); }
+.ts-post-card h3 { color: var(--ink); }
+.ts-post-card:hover h3 { color: var(--apple); }
+
+.ts-more {
+  display: inline-block;
+  margin-top: var(--space-5);
+  font-weight: 600;
+  color: var(--apple);
+}
+
+.ts-post {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6) var(--space-9);
+}
+.ts-post h1 { font-size: clamp(30px, 5vw, 42px); }
+.ts-post__meta { color: var(--earth); font-size: 14px; margin-bottom: var(--space-6); }
+.ts-post__body p { color: var(--ink-soft); }
+.ts-post__body h2 { font-size: 24px; margin-top: var(--space-6); }
+.ts-post__signature {
+  margin-top: var(--space-6);
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink);
+}
+.ts-post__back { display: inline-block; margin-top: var(--space-6); font-weight: 600; }
+
+/* Contact ------------------------------------------------------------------ */
+
+.ts-contact-details {
+  margin-top: var(--space-5);
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.ts-contact-details span { display: block; }
+
+/* Footer ------------------------------------------------------------------- */
+
+.ts-footer {
+  background: var(--ink);
+  color: rgba(250, 246, 238, 0.85);
+  font-size: 14px;
+  margin-top: var(--space-8);
+}
+.ts-footer__inner {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  justify-content: space-between;
+  align-items: center;
+}
+.ts-footer a { color: var(--paper); }
+
+/* Reveal animations ---------------------------------------------------------
+   Elements start hidden only when JS is present (html.js, set in <head>).
+   html.js-leaves is added by leaves.js when the canvas engine starts. */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* BBiC figure ---------------------------------------------------------------- */
+
+.ts-bbic {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  text-align: center;
+}
+.ts-bbic figcaption {
+  font-size: 13px;
+  color: var(--earth);
+  margin-top: var(--space-2);
+}
+
+/* Responsive ----------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .ts-grid { grid-template-columns: 1fr; }
+  .ts-split { grid-template-columns: 1fr; gap: var(--space-5); }
+  .ts-chapter { padding: var(--space-8) 0; }
+  .ts-hero { padding: var(--space-8) 0; }
+}
+
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .ts-shell { padding: 0 var(--space-5); }
+  .ts-header__inner { padding: var(--space-3) var(--space-5); }
+  .ts-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--hairline);
+    padding: var(--space-2) var(--space-5) var(--space-4);
+  }
+  .ts-nav.is-open { display: flex; }
+  .ts-nav a { display: block; padding: var(--space-2) 0; font-size: 16px; }
+  .ts-nav-toggle { display: inline-block; }
+  .ts-brand__text { font-size: 13px; }
+}
+
+/* Reduced motion --------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ts-btn { transition: none; }
+}

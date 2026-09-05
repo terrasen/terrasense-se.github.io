@@ -1,0 +1,26 @@
+---
+layout: default
+title: Reflektioner från behandlingsarbetet
+description: Korta reflektioner från vardagen i behandlingsarbetet hos Terra Sense — om instabilitet, föräldraförmåga, hemmiljö, barns beteende och hopp.
+permalink: /reflektioner/
+---
+<main id="main">
+  <section class="ts-chapter" data-scene="ambient">
+    <div class="ts-shell">
+      <div class="ts-chapter__text reveal">
+        <span class="ts-kicker">Reflektioner</span>
+        <h1 class="ts-title">Tankar från behandlingsarbetet.</h1>
+        <p class="ts-lead">Korta reflektioner från vardagen i behandlingsarbetet — om det som är svårt, det som fungerar och det som ger hopp. Vid pennan, Annahita.</p>
+      </div>
+      <div class="ts-grid">
+        {% for post in site.posts %}
+        <a class="ts-card ts-post-card reveal" href="{{ post.url | relative_url }}">
+          <span class="ts-meta">Reflektion</span>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>

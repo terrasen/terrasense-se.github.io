@@ -1,0 +1,11 @@
+{
+  "name": "Terra Sense Stöd & Behandling",
+  "short_name": "Terra Sense",
+  "icons": [
+    { "src": "/assets/web-app-manifest-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/web-app-manifest-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#2f4f4f",
+  "background_color": "#faf6ee",
+  "display": "browser"
+}
