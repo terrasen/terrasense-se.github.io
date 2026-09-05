@@ -3,6 +3,18 @@
 Guidance for AI coding agents (ChatGPT/Codex, Claude Code, Copilot, etc.)
 and humans working in this repository. Read this before making changes.
 
+## Start Here: the `terrasense-website` skill
+
+If a skill named **`terrasense-website`** is available in your environment,
+**load it first** and follow it. It exists on the site owner's (Annahita's)
+computer and guides non-technical updates — new Reflektioner posts, text
+edits, publishing — without requiring local Jekyll tooling. Prefer its
+workflow over anything below when they differ.
+
+If the skill is *not* available, you are most likely working with a
+technical maintainer on another machine. Proceed with this file as-is; no
+special handling is needed.
+
 ## Project Overview
 
 Website for Terra Sense Stöd & Behandling (öppenvård for children/families on
