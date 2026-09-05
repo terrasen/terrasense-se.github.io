@@ -15,20 +15,17 @@ Design spec with full rationale: `docs/superpowers/specs/2026-07-11-terrasense-w
 
 ```bash
 bundle install                                   # once (path: vendor/bundle)
-bundle exec jekyll serve --livereload            # http://127.0.0.1:4000/terrasense-se.github.io/
+bundle exec jekyll serve --livereload            # http://127.0.0.1:4000/
 JEKYLL_ENV=production bundle exec jekyll build   # must pass with zero errors before push
 ```
 
-Local URLs include the `/terrasense-se.github.io/` baseurl subpath — always.
 
 ## Deployment
 
 - Push to `main` → GitHub Pages (legacy build) deploys automatically.
-- Live (interim): https://terrasen.github.io/terrasense-se.github.io/
-- `_config.yml` has `baseurl: /terrasense-se.github.io` — every asset/link MUST
-  go through `relative_url`, or it breaks on the live site.
-- DNS cutover to terrasense.se: step-by-step checklist in README.md (change
-  url/baseurl, add CNAME file, GoDaddy A-records, enforce HTTPS). Not done yet.
+- Live: https://terrasense.se (custom domain via `CNAME`, HTTPS enforced,
+  cutover done 2026-09-05). `baseurl` is empty; keep using `relative_url`
+  anyway so the site survives a future subpath deploy.
 - The repo must stay public (free-plan requirement for Pages).
 - Repo: `terrasen/terrasense-se.github.io` (moved from the personal account
   `krist00fer` in Sept 2026; docs/ specs may still mention the old path).
