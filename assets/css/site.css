@@ -145,9 +145,7 @@ p { margin: 0 0 var(--space-4); }
   font-size: 15px;
   color: var(--ink);
 }
-.ts-brand a { color: inherit; }
-.ts-brand a:hover { text-decoration: none; }
-.ts-brand__home { display: flex; flex: none; }
+.ts-brand:hover { text-decoration: none; }
 .ts-brand__text { display: block; line-height: 1.2; }
 .ts-brand__logo { width: auto; height: 38px; flex: none; }
 .ts-brand__sub {
@@ -555,7 +553,54 @@ h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
   gap: var(--space-5);
 }
 .ts-choice__card {
-  padding: var(--space-7) var(--space-6);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.ts-choice__card:hover, .ts-choice__card:focus-visible {
+  text-decoration: none;
+  color: var(--ink);
+  transform: translateY(-4px);
+  border-color: var(--hairline-strong);
+  box-shadow: 0 28px 56px -28px rgba(47, 79, 79, 0.45);
+}
+.ts-choice__card:focus-visible { outline: 2px solid var(--apple); outline-offset: 3px; }
+
+/* Soft photograph behind each card: visible at the top, fading into the
+   card so the text always sits on (almost) white. */
+.ts-choice__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 360px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* The photo itself fades out into the white card; no overlay, no seam. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, rgba(0, 0, 0, 0.5) 62%, rgba(0, 0, 0, 0.08) 84%, transparent 96%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 38%, rgba(0, 0, 0, 0.5) 62%, rgba(0, 0, 0, 0.08) 84%, transparent 96%);
+}
+.ts-choice__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  display: block;
+  transform: scale(1.03);
+  transition: transform 1.6s ease;
+}
+.ts-choice__card:hover .ts-choice__bg img { transform: scale(1.08); }
+.ts-choice__body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  margin-top: 250px;
+  padding: var(--space-6) var(--space-6) var(--space-6);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
@@ -651,7 +696,8 @@ h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
   .ts-hero__logo { height: 72px; }
   .ts-tagline { gap: var(--space-3); font-size: 12px; letter-spacing: 0.18em; }
   .ts-tagline::before, .ts-tagline::after { width: 28px; }
-  .ts-choice__card { padding: var(--space-5); }
+  .ts-choice__bg { height: 280px; }
+  .ts-choice__body { margin-top: 190px; padding: var(--space-5); }
   .ts-strip__text p { font-size: 19px; }
 }
 
@@ -681,3 +727,8 @@ h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
 /* Icon inside a button (Instagram) */
 .ts-btn--icon { display: inline-flex; align-items: center; gap: 8px; }
 .ts-btn--icon svg { flex: none; }
+
+/* KBT illustration (Sense Terapi): transparent PNG on the tinted band */
+.ts-kbt { text-align: center; }
+.ts-kbt img { width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto; }
+.ts-kbt figcaption { font-size: 13px; color: var(--earth); margin-top: var(--space-3); }

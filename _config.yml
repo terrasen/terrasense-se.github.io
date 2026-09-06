@@ -2,7 +2,7 @@ title: Terra Sense Stöd & Behandling
 name: Terra Sense Stöd & Behandling
 description: >-
   Öppenvård som kompletterar socialtjänsten. Hemutredningar enligt BBiC,
-  intensiv familjebehandling i hemmiljö och handledning till familjehem —
+  intensiv familjebehandling i hemmiljö och handledning till familjehem,
   med barnets behov i centrum. Stockholm, sedan 2014.
 meta_image: /assets/images/og-image.png
 
@@ -30,6 +30,7 @@ collections:
 
 exclude:
   - docs
+  - assets/images/source
   - vendor
   - tmp
   - Gemfile

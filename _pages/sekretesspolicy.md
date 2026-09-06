@@ -22,7 +22,7 @@ besöksstatistik. Vi använder inga analys- eller spårningsverktyg.
 ## När du kontaktar oss
 
 Om du kontaktar oss via e-post eller telefon behandlar vi de uppgifter du
-själv lämnar — till exempel namn och kontaktuppgifter — endast för att kunna
+själv lämnar, till exempel namn och kontaktuppgifter, endast för att kunna
 besvara och hantera din förfrågan. Uppgifterna delas inte med tredje part och
 behandlas med sekretess.
 

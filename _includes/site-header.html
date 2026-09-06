@@ -4,26 +4,24 @@
 {%- assign st_url = '/sense-terapi/' | relative_url -%}
 <header class="ts-header">
   <div class="ts-header__inner">
-    {%- comment -%} The logo always leads to the start page (switch between the
-    two sections); the text leads to the start of the current section. {%- endcomment -%}
-    <div class="ts-brand">
-      <a class="ts-brand__home" href="{{ home_url }}" aria-label="Till startsidan">
-        <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
-      </a>
+    {%- comment -%} Logo and brand text always lead to the start page, so a
+    visitor can switch between Terra Sense and Sense Terapi from anywhere. {%- endcomment -%}
+    <a class="ts-brand" href="{{ home_url }}">
+      <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
       {%- if section == 'senseterapi' %}
-      <a class="ts-brand__text" href="{{ st_url }}">SENSE TERAPI
+      <span class="ts-brand__text">SENSE TERAPI
         <span class="ts-brand__sub ts-brand__sub--rose">Individuell terapi · Idrottspsykologi</span>
-      </a>
+      </span>
       {%- elsif section == 'home' %}
-      <a class="ts-brand__text" href="{{ home_url }}">TERRA SENSE
+      <span class="ts-brand__text">TERRA SENSE
         <span class="ts-brand__sub">Stöd · Terapi · Idrottspsykologi</span>
-      </a>
+      </span>
       {%- else %}
-      <a class="ts-brand__text" href="{{ ts_url }}">TERRA SENSE
+      <span class="ts-brand__text">TERRA SENSE
         <span class="ts-brand__sub">Stöd &amp; Behandling</span>
-      </a>
+      </span>
       {%- endif %}
-    </div>
+    </a>
     <button class="ts-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Meny</button>
     <nav class="ts-nav" id="site-nav" aria-label="Huvudmeny">
       {%- if section == 'senseterapi' %}

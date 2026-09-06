@@ -1,6 +1,6 @@
 # terrasense.se
 
-Webbplats för **Terra Sense Stöd & Behandling** — öppenvård som kompletterar
+Webbplats för **Terra Sense Stöd & Behandling**, öppenvård som kompletterar
 socialtjänsten, med barnets behov i centrum.
 
 Statisk Jekyll-sajt på GitHub Pages med ett eget designsystem ("Stilla mark")
