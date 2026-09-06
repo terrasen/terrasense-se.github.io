@@ -332,7 +332,7 @@
 
   /* ---------- content rects (leaves dive under these) ---------- */
 
-  var CONTENT_SELECTOR = '.ts-header__inner, .ts-chapter__text, .ts-card, .ts-bbic, .ts-kbt, .ts-strip, .ts-actions, .ts-statline, .ts-contact-details, .ts-more, .ts-post, .ts-hero .reveal';
+  var CONTENT_SELECTOR = '.ts-header__inner, .ts-chapter__text, .ts-card, .ts-illustration, .ts-strip, .ts-actions, .ts-statline, .ts-contact-details, .ts-more, .ts-post, .ts-hero .reveal';
   var contentEls = Array.prototype.slice.call(document.querySelectorAll(CONTENT_SELECTOR));
   var contentRects = [];
   function updateRects() {

@@ -60,13 +60,13 @@ with surroundings and digitally when needed:
   **Never mention socialtjänsten on this page** - it belongs to
   `/terra-sense/` only. `section: home` in front matter.
 - `_pages/terra-sense.html` (`/terra-sense/`) - the original homepage,
-  content unchanged: Hero → 01 Tjänster → 02 Arbetssätt (inline
-  BBiC-triangle SVG) → 03 Om → 04 Reflektioner (latest 3 posts) → 05
+  content unchanged: Hero → 01 Tjänster → 02 Arbetssätt (BBiC
+  illustration `assets/images/bbic.{webp,png}`, `.ts-illustration`) → 03 Om → 04 Reflektioner (latest 3 posts) → 05
   Kontakt. `section: terrasense` (the default for posts and other pages).
 - `_pages/sense-terapi.html` (`/sense-terapi/`) - Sense Terapi, the private
   side: Hero → 01 Erbjudande (individuell terapi, parterapi,
   idrottspsykologi) → 02 Arbetssätt (KBT illustration
-  `assets/images/kbt.{webp,png}`, `.ts-kbt`) →
+  `assets/images/kbt.{webp,png}`, `.ts-illustration`) →
   03 Om → 04 Priser (`.ts-prices`; amounts come from Annahita - do not
   invent or change them) → 05 Kontakt (phone, e-mail, Instagram
   @sense.terapi). `section: senseterapi`. Copy here was drafted by the
@@ -89,7 +89,7 @@ with surroundings and digitally when needed:
   pastels, spacing). Class prefix `ts-`.
 - `assets/js/main.js` - reveal animations (IO), footer year, mobile nav.
 - `assets/js/leaves.js` - the leaf engine (see below).
-- Illustrations: masters in `assets/images/source/` (`kbt.png`,
+- Illustrations: masters in `assets/images/source/` (`bbic.png`, `kbt.png`,
   `terra-sense-illustration.png`, `sense-terapi-illustration.png`); web
   versions are generated with Pillow (`thumbnail` to 900/1400 px, webp +
   jpg/png fallback, `<picture>` in markup).

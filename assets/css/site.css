@@ -438,21 +438,6 @@ h1.ts-title { font-size: clamp(36px, 6vw, 56px); }
   transform: none;
 }
 
-/* BBiC figure ---------------------------------------------------------------- */
-
-.ts-bbic {
-  background: var(--card);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
-  padding: var(--space-5);
-  text-align: center;
-}
-.ts-bbic figcaption {
-  font-size: 13px;
-  color: var(--earth);
-  margin-top: var(--space-2);
-}
-
 /* Responsive ----------------------------------------------------------------- */
 
 @media (max-width: 900px) {
@@ -728,10 +713,11 @@ h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
 .ts-btn--icon { display: inline-flex; align-items: center; gap: 8px; }
 .ts-btn--icon svg { flex: none; }
 
-/* KBT illustration (Sense Terapi): transparent PNG on the tinted band */
-.ts-kbt { text-align: center; }
-.ts-kbt img { width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto; }
-.ts-kbt figcaption { font-size: 13px; color: var(--earth); margin-top: var(--space-3); }
+/* Illustrations (BBiC on Terra Sense, KBT on Sense Terapi): transparent
+   PNG straight on the tinted band, no card frame */
+.ts-illustration { text-align: center; }
+.ts-illustration img { width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto; }
+.ts-illustration figcaption { font-size: 13px; color: var(--earth); margin-top: var(--space-3); }
 
 /* Chapter with the message on the left and an illustration beside it
    (Sense Terapi · Arbetssätt). The figure sits level with the text, not
@@ -739,5 +725,5 @@ h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
 .ts-split--figure { margin-top: 0; align-items: center; }
 .ts-split--figure .ts-chapter__text { margin-bottom: var(--space-5); }
 @media (max-width: 900px) {
-  .ts-split--figure .ts-kbt { margin-top: var(--space-4); }
+  .ts-split--figure .ts-illustration { margin-top: var(--space-4); }
 }
