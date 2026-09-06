@@ -1,18 +1,52 @@
+{%- assign section = page.section | default: 'terrasense' -%}
+{%- assign home_url = '/' | relative_url -%}
+{%- assign ts_url = '/terra-sense/' | relative_url -%}
+{%- assign st_url = '/sense-terapi/' | relative_url -%}
 <header class="ts-header">
   <div class="ts-header__inner">
-    <a class="ts-brand" href="{{ '/' | relative_url }}">
+    {%- if section == 'senseterapi' %}
+    <a class="ts-brand" href="{{ st_url }}">
+      <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
+      <span class="ts-brand__text">SENSE TERAPI
+        <span class="ts-brand__sub ts-brand__sub--rose">Individuell terapi · Idrottspsykologi</span>
+      </span>
+    </a>
+    {%- elsif section == 'home' %}
+    <a class="ts-brand" href="{{ home_url }}">
+      <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
+      <span class="ts-brand__text">TERRA SENSE
+        <span class="ts-brand__sub">Stöd · Terapi · Idrottspsykologi</span>
+      </span>
+    </a>
+    {%- else %}
+    <a class="ts-brand" href="{{ ts_url }}">
       <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
       <span class="ts-brand__text">TERRA SENSE
         <span class="ts-brand__sub">Stöd &amp; Behandling</span>
       </span>
     </a>
+    {%- endif %}
     <button class="ts-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Meny</button>
     <nav class="ts-nav" id="site-nav" aria-label="Huvudmeny">
-      <a href="{{ '/' | relative_url }}#tjanster">Tjänster</a>
-      <a href="{{ '/' | relative_url }}#arbetssatt">Arbetssätt</a>
-      <a href="{{ '/' | relative_url }}#om">Om oss</a>
+      {%- if section == 'senseterapi' %}
+      <a href="{{ st_url }}#erbjudande">Erbjudande</a>
+      <a href="{{ st_url }}#arbetssatt">Arbetssätt</a>
+      <a href="{{ st_url }}#om">Om</a>
+      <a href="{{ st_url }}#kontakt">Kontakt</a>
+      <a class="ts-nav__cross" href="{{ ts_url }}">Stöd &amp; Behandling</a>
+      {%- elsif section == 'home' %}
+      <a href="{{ ts_url }}">Stöd &amp; Behandling</a>
+      <a href="{{ st_url }}">Sense Terapi</a>
       <a href="{{ '/reflektioner/' | relative_url }}">Reflektioner</a>
-      <a href="{{ '/' | relative_url }}#kontakt">Kontakt</a>
+      <a href="{{ home_url }}#kontakt">Kontakt</a>
+      {%- else %}
+      <a href="{{ ts_url }}#tjanster">Tjänster</a>
+      <a href="{{ ts_url }}#arbetssatt">Arbetssätt</a>
+      <a href="{{ ts_url }}#om">Om oss</a>
+      <a href="{{ '/reflektioner/' | relative_url }}">Reflektioner</a>
+      <a href="{{ ts_url }}#kontakt">Kontakt</a>
+      <a class="ts-nav__cross" href="{{ st_url }}">Sense Terapi</a>
+      {%- endif %}
     </nav>
   </div>
 </header>

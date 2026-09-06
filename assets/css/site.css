@@ -495,3 +495,159 @@ h1.ts-title { font-size: clamp(36px, 6vw, 56px); }
   }
   .ts-btn { transition: none; }
 }
+
+/* ==========================================================================
+   Two sections: start page (chooser) and Sense Terapi
+   ========================================================================== */
+
+/* Brand sub-line variant for Sense Terapi */
+.ts-brand__sub--rose { color: var(--bbic-rose-ink); }
+
+/* Cross-link to the other section, at the end of the nav */
+.ts-nav__cross {
+  padding-left: var(--space-5);
+  border-left: 1px solid var(--hairline-strong);
+  color: var(--earth);
+}
+
+/* Start page hero: logo + wordmark + tagline */
+.ts-hero--wordmark { padding-bottom: var(--space-7); }
+.ts-hero__logo {
+  height: 96px;
+  width: auto;
+  display: block;
+  margin: 0 auto var(--space-3);
+}
+.ts-wordmark { letter-spacing: -0.01em; }
+h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
+.ts-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 var(--space-5);
+}
+.ts-tagline::before, .ts-tagline::after {
+  content: "";
+  flex: none;
+  width: 72px;
+  height: 1px;
+  background: var(--hairline-strong);
+}
+
+/* Chapter that follows the hero directly, without the big top gap */
+.ts-chapter--flush { padding-top: 0; }
+/* Shorter tinted band (start page contact strip) */
+.ts-chapter--slim { padding: var(--space-7) 0; }
+
+/* The two choice cards */
+.ts-choice {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+.ts-choice__card {
+  padding: var(--space-7) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.ts-choice__card .ts-meta { margin-bottom: 0; }
+.ts-choice__name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ts-choice__name h2 { font-size: clamp(30px, 3.5vw, 40px); margin: 0; }
+.ts-choice__sub {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--apple);
+}
+.ts-choice__rule {
+  display: block;
+  width: 56px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--sage);
+}
+.ts-choice__card p { font-size: 17px; color: var(--ink-soft); }
+.ts-choice__list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--ink);
+}
+.ts-choice__list li { display: flex; align-items: center; gap: 12px; }
+.ts-choice__list svg { flex: none; color: var(--apple); }
+.ts-choice__foot {
+  margin-top: auto;
+  padding-top: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.ts-choice__note { font-size: 14px; color: var(--earth); }
+
+.ts-choice--rose .ts-choice__sub { color: var(--bbic-rose-ink); }
+.ts-choice--rose .ts-choice__rule { background: var(--bbic-rose); }
+.ts-choice--rose .ts-choice__list svg { color: var(--bbic-rose-ink); }
+
+/* Start page contact strip */
+.ts-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+.ts-strip__text { max-width: 640px; }
+.ts-strip__text .ts-kicker { margin-bottom: var(--space-2); }
+.ts-strip__text p {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.35;
+  margin: 0;
+}
+.ts-strip .ts-actions { margin-top: 0; }
+
+/* Icon circles on Sense Terapi service cards */
+.ts-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7e5e2;
+  color: var(--bbic-rose-ink);
+  margin-bottom: var(--space-3);
+}
+.ts-icon--green { background: #eef3e8; color: var(--bbic-green-ink); }
+.ts-icon--gold { background: #f8f1dc; color: var(--bbic-gold-ink); }
+
+/* Footer links */
+.ts-footer__links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+
+@media (max-width: 900px) {
+  .ts-choice { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .ts-nav__cross { padding-left: 0; border-left: 0; }
+  .ts-hero__logo { height: 72px; }
+  .ts-tagline { gap: var(--space-3); font-size: 12px; letter-spacing: 0.18em; }
+  .ts-tagline::before, .ts-tagline::after { width: 28px; }
+  .ts-choice__card { padding: var(--space-5); }
+  .ts-strip__text p { font-size: 19px; }
+}

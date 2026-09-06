@@ -45,11 +45,33 @@ JEKYLL_ENV=production bundle exec jekyll build   # must pass with zero errors be
 
 ## Architecture
 
-- `index.html` — the whole homepage: chapters Hero → 01 Tjänster → 02
-  Arbetssätt (inline BBiC-triangle SVG) → 03 Om → 04 Reflektioner (latest 3
-  posts) → 05 Kontakt. Each section has `data-scene` (ambient | clusters |
-  triangle | heart) consumed by the leaf engine. Three `.ts-interlude` divs
-  (with `data-scene-mobile`) are leaf-only breathing bands shown ≤900px.
+Since Sept 2026 the site is split in two sections under one domain
+(Annahita's decision — private clients should not feel they are contacting
+a socialtjänst supplier):
+
+- `index.html` — the start page: logo + wordmark "Terra Sense" with the
+  tagline "Stöd · Terapi · Idrottspsykologi", then two equal choice cards
+  (`.ts-choice`) linking to the sections, then a short tinted contact strip.
+  **Never mention socialtjänsten on this page** — it belongs to
+  `/terra-sense/` only. `section: home` in front matter.
+- `_pages/terra-sense.html` (`/terra-sense/`) — the original homepage,
+  content unchanged: Hero → 01 Tjänster → 02 Arbetssätt (inline
+  BBiC-triangle SVG) → 03 Om → 04 Reflektioner (latest 3 posts) → 05
+  Kontakt. `section: terrasense` (the default for posts and other pages).
+- `_pages/sense-terapi.html` (`/sense-terapi/`) — Sense Terapi, the private
+  side: Hero → 01 Erbjudande (individuell terapi, parterapi,
+  idrottspsykologi) → 02 Arbetssätt (inline KBT-triangle SVG, `.ts-kbt`) →
+  03 Om → 04 Kontakt. `section: senseterapi`. Copy here was drafted by the
+  maintainers, not by Annahita — she reviews and fills in facts (pricing,
+  location, booking) herself; do not invent them.
+- `_includes/site-header.html` branches on `page.section` (home |
+  terrasense | senseterapi): brand text/sub-line and nav differ, and each
+  section's nav ends with a muted cross-link (`.ts-nav__cross`) to the other.
+  `standalone_title: true` in front matter drops the " · site.title" suffix.
+- Every chapter has `data-scene` (ambient | clusters | triangle | heart)
+  consumed by the leaf engine. `.ts-interlude` divs (with
+  `data-scene-mobile`) are leaf-only breathing bands shown ≤900px — both
+  sections and the start page carry them.
 - `_posts/` — Annahita's "Reflektioner" (8 migrated). New post = one markdown
   file with only a `title:` in front matter; `_layouts/post.html` adds the
   "Vid pennan, Annahita" signature automatically.
