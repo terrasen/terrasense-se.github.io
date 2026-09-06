@@ -100,6 +100,20 @@ with surroundings and digitally when needed:
   `assets/images/og-image.png`. To regenerate: icons with Pillow (crop alpha
   bbox, `thumbnail`, center on canvas); OG image by serving the repo root and
   screenshotting `#og` in `tmp/raster.html` at 1200×630 with Playwright.
+- Favicon, vector: `assets/favicon.svg` is a VTracer trace of the master
+  (alpha cleaned, light blur, `-p 8 -g 8 -f 4 --hierarchical cutout
+  --simplify 1.2 --optimize 2`, square viewBox). It flattens the watercolor
+  shading somewhat; that is accepted. Never use it in page content, the PNG
+  stays the logo on the site.
+- Favicon, `favicon.ico` (repo root): a deliberately simplified flat
+  three-leaf icon, drawn by hand so it reads at 16 px. Sources:
+  `assets/images/source/favicon-icon.svg` (32 px and up) and
+  `favicon-icon-16.svg` (bolder, for the 16 px entry). Regenerate with resvg
+  at 16/32/48/64 and pack with Pillow (`save(format="ICO", sizes=...,
+  append_images=...)` from the 64 px render as base). Head links, in order:
+  ico, svg, png-96, apple-touch-icon, manifest. Safari caches favicons per
+  domain very aggressively, so test in a fresh profile or after clearing
+  site data.
 
 ## The Leaf Engine (assets/js/leaves.js)
 
