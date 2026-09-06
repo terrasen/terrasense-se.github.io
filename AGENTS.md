@@ -61,12 +61,15 @@ a socialtjänst supplier):
 - `_pages/sense-terapi.html` (`/sense-terapi/`) — Sense Terapi, the private
   side: Hero → 01 Erbjudande (individuell terapi, parterapi,
   idrottspsykologi) → 02 Arbetssätt (inline KBT-triangle SVG, `.ts-kbt`) →
-  03 Om → 04 Kontakt. `section: senseterapi`. Copy here was drafted by the
-  maintainers, not by Annahita — she reviews and fills in facts (pricing,
-  location, booking) herself; do not invent them.
+  03 Om → 04 Priser (`.ts-prices`; amounts come from Annahita — do not
+  invent or change them) → 05 Kontakt (phone, e-mail, Instagram
+  @sense.terapi). `section: senseterapi`. Copy here was drafted by the
+  maintainers, not by Annahita — she reviews and fills in facts herself.
 - `_includes/site-header.html` branches on `page.section` (home |
-  terrasense | senseterapi): brand text/sub-line and nav differ, and each
-  section's nav ends with a muted cross-link (`.ts-nav__cross`) to the other.
+  terrasense | senseterapi). The logo ALWAYS links to the start page `/`
+  (that is how visitors switch section); the brand text links to the start
+  of the current section. Nav differs per section and ends with a muted
+  cross-link (`.ts-nav__cross`) to the other section.
   `standalone_title: true` in front matter drops the " · site.title" suffix.
 - Every chapter has `data-scene` (ambient | clusters | triangle | heart)
   consumed by the leaf engine. `.ts-interlude` divs (with

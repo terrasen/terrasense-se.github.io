@@ -4,34 +4,33 @@
 {%- assign st_url = '/sense-terapi/' | relative_url -%}
 <header class="ts-header">
   <div class="ts-header__inner">
-    {%- if section == 'senseterapi' %}
-    <a class="ts-brand" href="{{ st_url }}">
-      <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
-      <span class="ts-brand__text">SENSE TERAPI
+    {%- comment -%} The logo always leads to the start page (switch between the
+    two sections); the text leads to the start of the current section. {%- endcomment -%}
+    <div class="ts-brand">
+      <a class="ts-brand__home" href="{{ home_url }}" aria-label="Till startsidan">
+        <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
+      </a>
+      {%- if section == 'senseterapi' %}
+      <a class="ts-brand__text" href="{{ st_url }}">SENSE TERAPI
         <span class="ts-brand__sub ts-brand__sub--rose">Individuell terapi · Idrottspsykologi</span>
-      </span>
-    </a>
-    {%- elsif section == 'home' %}
-    <a class="ts-brand" href="{{ home_url }}">
-      <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
-      <span class="ts-brand__text">TERRA SENSE
+      </a>
+      {%- elsif section == 'home' %}
+      <a class="ts-brand__text" href="{{ home_url }}">TERRA SENSE
         <span class="ts-brand__sub">Stöd · Terapi · Idrottspsykologi</span>
-      </span>
-    </a>
-    {%- else %}
-    <a class="ts-brand" href="{{ ts_url }}">
-      <img class="ts-brand__logo" src="{{ '/assets/images/logo.png' | relative_url }}" alt="" width="300" height="320" decoding="async">
-      <span class="ts-brand__text">TERRA SENSE
+      </a>
+      {%- else %}
+      <a class="ts-brand__text" href="{{ ts_url }}">TERRA SENSE
         <span class="ts-brand__sub">Stöd &amp; Behandling</span>
-      </span>
-    </a>
-    {%- endif %}
+      </a>
+      {%- endif %}
+    </div>
     <button class="ts-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Meny</button>
     <nav class="ts-nav" id="site-nav" aria-label="Huvudmeny">
       {%- if section == 'senseterapi' %}
       <a href="{{ st_url }}#erbjudande">Erbjudande</a>
       <a href="{{ st_url }}#arbetssatt">Arbetssätt</a>
       <a href="{{ st_url }}#om">Om</a>
+      <a href="{{ st_url }}#priser">Priser</a>
       <a href="{{ st_url }}#kontakt">Kontakt</a>
       <a class="ts-nav__cross" href="{{ ts_url }}">Stöd &amp; Behandling</a>
       {%- elsif section == 'home' %}

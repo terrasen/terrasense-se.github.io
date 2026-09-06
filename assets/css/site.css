@@ -145,7 +145,10 @@ p { margin: 0 0 var(--space-4); }
   font-size: 15px;
   color: var(--ink);
 }
-.ts-brand:hover { text-decoration: none; }
+.ts-brand a { color: inherit; }
+.ts-brand a:hover { text-decoration: none; }
+.ts-brand__home { display: flex; flex: none; }
+.ts-brand__text { display: block; line-height: 1.2; }
 .ts-brand__logo { width: auto; height: 38px; flex: none; }
 .ts-brand__sub {
   display: block;
@@ -651,3 +654,30 @@ h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
   .ts-choice__card { padding: var(--space-5); }
   .ts-strip__text p { font-size: 19px; }
 }
+
+/* Price list (Sense Terapi) */
+.ts-prices {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-5) 0 var(--space-4);
+  border-top: 1px solid var(--hairline-strong);
+}
+.ts-prices li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3) var(--space-4);
+  flex-wrap: wrap;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.ts-prices__name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--ink);
+}
+.ts-prices__meta { font-size: 15px; color: var(--earth); flex: 1; }
+.ts-prices__amount { font-weight: 600; white-space: nowrap; }
+
+/* Icon inside a button (Instagram) */
+.ts-btn--icon { display: inline-flex; align-items: center; gap: 8px; }
+.ts-btn--icon svg { flex: none; }
