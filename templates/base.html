@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{%- if page %}{% set p = page %}{% elif section %}{% set p = section %}{% else %}{% set p = config.extra.not_found %}{% endif %}
+{%- set url = config.base_url ~ p.path %}
+<html lang="{{ p.extra.lang | default(value=config.default_language) }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if p.extra.standalone_title %}{{ p.title }}{% else %}{{ p.title }} · {{ config.title }}{% endif %}</title>
+  <meta name="description" content="{{ p.description | default(value=config.description) }}">
+  <link rel="canonical" href="{{ url }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ p.title }}">
+  <meta property="og:description" content="{{ p.description | default(value=config.description) }}">
+  <meta property="og:image" content="{{ config.base_url ~ config.extra.meta_image }}">
+  <meta property="og:url" content="{{ url }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  {% include "partials/head-icons.html" %}
+  <link rel="manifest" href="/assets/site.webmanifest">
+
+  {% include "partials/head-fonts.html" %}
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="ts-skip" href="#main">Till innehållet</a>
+  <canvas id="leaves" aria-hidden="true"></canvas>
+  {% include "partials/site-header.html" %}
+  {% block content %}{% endblock content %}
+  {% include "partials/site-footer.html" %}
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/leaves.js" defer></script>
+</body>
+</html>
