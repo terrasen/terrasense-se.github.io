@@ -64,8 +64,14 @@ in `scripts/zola`; CI uses the same script, so local and live builds match.
 - Push to `main` → `.github/workflows/pages.yml` builds with `scripts/zola`
   and deploys to GitHub Pages, usually within a minute or two. If the build
   fails, the previous version stays online.
-- Live: https://terrasense.se (custom domain via `static/CNAME`, HTTPS
-  enforced, cutover done 2026-09-05).
+- Live: https://terrasense.se (HTTPS enforced, cutover done 2026-09-05).
+- The repository's Pages settings must have Source = "GitHub Actions" and
+  Custom domain = `terrasense.se`. With that source the domain comes from
+  the setting; `static/CNAME` is only a published copy. Under the old
+  source ("Deploy from a branch") GitHub read `CNAME` from the repo root,
+  and pushing the Zola layout there drops the domain and takes the site
+  offline (this happened 2026-11-10). Only a repository admin can change
+  the setting.
 - The repo must stay public (free-plan requirement for Pages).
 - Repo: `terrasen/terrasense-se.github.io` (moved from the personal account
   `krist00fer` in Sept 2026; docs/ specs may still mention the old path).
@@ -228,7 +234,8 @@ energy target (0.45), dive rate (0.045), gust thresholds.
   be added but must be factual and neutral in tone.
 - Her bio facts (Om section) are sourced from her public LinkedIn profile.
 - Calm, serious, warm. No sales language, no forms, no cookies, no analytics.
-  Contact is tel/mailto only - keep it that way.
+  Contact is tel/mailto plus the Instagram link (@sense.terapi) in the
+  contact section of the three main pages - keep it that way.
 - Audiences: (1) socialtjänst handläggare (operational facts, credibility),
   (2) families in crisis (warmth, safety). Content decisions should serve both.
 

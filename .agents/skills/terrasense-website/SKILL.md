@@ -49,6 +49,14 @@ are hers and should be kept (describe them in plain words). If `git pull`
 fails because of a conflict, stop and tell her Kristofer needs to look at
 it; do not force anything.
 
+After the pull, check that the repository is the current one: the file
+`config.toml` and the folders `content/` and `templates/` must exist. If
+you see `_config.yml`, `_posts/` or a `Gemfile` instead, the site has not
+been moved to the new setup in this copy: stop, change nothing, and tell
+her Kristofer needs to look at it. Folders named `_site`, `vendor` or
+`.jekyll-cache` may be left over from the old setup; ignore them, they are
+never published.
+
 ## 2. Make the change
 
 ### A new Reflektion (blog post)
@@ -95,12 +103,16 @@ in older posts (it keeps old links working).
 | Menu / footer | `templates/partials/site-header.html`, `site-footer.html` |
 | Page title and description shown in Google | the matching file in `content/` |
 | Phone, e-mail, org.nr, invoice address, manager | `config.toml` under `[extra]` |
+| Instagram link (@sense.terapi) | the contact section of the three page files above |
 
 Find the sentence with a search (`grep -rn "a few words" templates content`)
 and change only the text between the HTML tags; leave tags, classes and
 attributes alone. Phone and e-mail live once in `config.toml`; a change
 there updates every page. The phone link `tel:+46762159919` in the
-templates must be updated by hand if the number changes.
+templates must be updated by hand if the number changes. The Instagram
+address is written out in each of the three page files (twice in
+`sense-terapi.html`); if it changes, change every occurrence
+(`grep -rn instagram templates`).
 
 Prices on Sense Terapi come only from Annahita: change exactly what she
 says.

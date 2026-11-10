@@ -2,6 +2,14 @@
 public/
 .tools/
 
+# Leftovers from the Jekyll era, in clones that built the old site
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+
 # Brainstorm/visual-companion sessions
 .superpowers/
 
