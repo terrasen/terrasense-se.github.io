@@ -709,6 +709,46 @@ h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
 .ts-prices__meta { font-size: 15px; color: var(--earth); flex: 1; }
 .ts-prices__amount { font-weight: 600; white-space: nowrap; }
 
+/* Price hint in the hero and on the offering cards (Sense Terapi) */
+.ts-pricehint {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-5);
+  margin-top: var(--space-5);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  background: rgba(229, 172, 166, 0.22);
+  color: var(--ink);
+  font-size: 15px;
+  transition: background 0.15s ease;
+}
+@media (max-width: 600px) { .ts-pricehint { border-radius: var(--radius); } }
+.ts-pricehint:hover { text-decoration: none; background: rgba(229, 172, 166, 0.34); }
+.ts-pricehint strong { font-weight: 600; margin-left: 4px; }
+.ts-pricehint__more { color: var(--bbic-rose-ink); font-weight: 600; }
+.ts-pricehint__more::after { content: " \2193"; }
+
+.ts-grid--priced .ts-card { display: flex; flex-direction: column; align-items: flex-start; }
+.ts-card__price {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  font-size: 15px;
+  color: var(--earth);
+}
+.ts-card__price::before { content: none; }
+.ts-card__price strong { color: var(--ink); font-weight: 600; white-space: nowrap; }
+.ts-card__price:hover { text-decoration: none; }
+.ts-card__price:hover strong { text-decoration: underline; }
+.ts-grid--priced .ts-card p { margin-bottom: var(--space-4); }
+.ts-grid--priced .ts-card__price { border-top: 1px solid var(--hairline); }
+
 /* Icon inside a button (Instagram) */
 .ts-btn--icon { display: inline-flex; align-items: center; gap: 8px; }
 .ts-btn--icon svg { flex: none; }
