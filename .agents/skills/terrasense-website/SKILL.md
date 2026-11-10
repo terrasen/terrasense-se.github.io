@@ -103,6 +103,7 @@ in older posts (it keeps old links working).
 | Menu / footer | `templates/partials/site-header.html`, `site-footer.html` |
 | Page title and description shown in Google | the matching file in `content/` |
 | Phone, e-mail, org.nr, invoice address, manager | `config.toml` under `[extra]` |
+| The e-mail that "Boka ett första samtal" opens (Sense Terapi) | `config.toml`: `booking_subject` and `booking_body`, as plain text |
 | Instagram link (@sense.terapi) | the contact section of the three page files above |
 
 Find the sentence with a search (`grep -rn "a few words" templates content`)

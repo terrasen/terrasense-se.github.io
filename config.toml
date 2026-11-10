@@ -28,6 +28,28 @@ invoice_address = "Flygarvägen 29, 175 69 Järfälla"
 manager = "Annahita Holmberg"
 meta_image = "/assets/images/og-image.png"
 
+# The e-mail that the button "Boka ett första samtal" on Sense Terapi opens.
+# Plain text: the page encodes it for the link. Keep it short.
+booking_subject = "Boka ett första samtal"
+booking_body = """
+Hej Annahita,
+
+Jag vill boka ett första samtal.
+
+Jag är intresserad av (individuell terapi, parterapi eller idrottspsykologi):
+
+Dagar och tider som passar mig:
+
+Jag träffas helst (på plats i Stockholm eller digitalt):
+
+Mitt telefonnummer:
+
+Kort om vad jag vill ha hjälp med (frivilligt):
+
+
+Vänliga hälsningar,
+"""
+
 # Stands in for page front matter on 404.html, which has no page.
 [extra.not_found]
 title = "Sidan finns inte"

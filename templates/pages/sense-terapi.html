@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+{#- The booking e-mail: text from config.toml, encoded for a mailto link. -#}
+{%- set booking_subject = config.extra.booking_subject | urlencode_strict -%}
+{%- set booking_body = config.extra.booking_body | trim_start | urlencode_strict | replace(from="%0A", to="%0D%0A") -%}
+{%- set booking_href = "mailto:" ~ config.extra.email ~ "?subject=" ~ booking_subject ~ "&body=" ~ booking_body -%}
 <main id="main">
 
   <section class="ts-chapter ts-hero" data-scene="ambient">
@@ -9,7 +13,11 @@
         <h1 class="ts-title">Samtal, utveckling<br>och hållbara resultat</h1>
         <p class="ts-lead">Sense Terapi vänder sig till dig som privatperson, till par och till idrottare och lag. Samtalen utgår från KBT och anpassas efter dina behov och mål, oavsett om du vill förstå dig själv bättre, stärka en relation eller prestera när det gäller.</p>
         <div class="ts-actions">
-          <a class="ts-btn ts-btn--primary" href="#kontakt">Kontakta mig</a>
+          <a class="ts-btn ts-btn--primary ts-btn--icon" href="{{ booking_href }}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>
+            Boka ett första samtal
+          </a>
+          <a class="ts-btn ts-btn--ghost" href="#kontakt">Kontakta mig</a>
           <a class="ts-btn ts-btn--ghost" href="#erbjudande">Erbjudande</a>
         </div>
         <a class="ts-pricehint" href="#priser">
@@ -147,6 +155,20 @@
           </li>
         </ul>
         <p style="color: var(--ink-soft);">För andra upplägg, till exempel idrottspsykologi för lag och grupper eller längre samtalsserier, kontakta mig så tar vi fram ett förslag tillsammans.</p>
+        <div class="ts-card ts-book" id="boka">
+          <span class="ts-meta">Första samtalet</span>
+          <h3>Så bokar du</h3>
+          <ol class="ts-book__steps">
+            <li><strong>Skriv några rader.</strong> Knappen öppnar ett färdigt mejl där du fyller i vad du är intresserad av och vilka tider som passar.</li>
+            <li><strong>Jag återkommer.</strong> Du får förslag på tid, på plats i Stockholm eller digitalt.</li>
+            <li><strong>Vi ses.</strong> Ett första samtal där vi utgår från dina behov och mål.</li>
+          </ol>
+          <a class="ts-btn ts-btn--primary ts-btn--icon" href="{{ booking_href }}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>
+            Boka ett första samtal
+          </a>
+          <p class="ts-book__note">Skriv bara det du känner dig bekväm med i ett mejl. Du kan också ringa <a href="tel:+46762159919">{{ config.extra.phone }}</a>.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -158,7 +180,11 @@
         <h2 class="ts-title">Välkommen att höra av dig.</h2>
         <p class="ts-lead">Kontakta mig för mer information om upplägg och tillgänglighet. Varje förfrågan behandlas med sekretess.</p>
         <div class="ts-actions">
-          <a class="ts-btn ts-btn--primary" href="tel:+46762159919">{{ config.extra.phone }}</a>
+          <a class="ts-btn ts-btn--primary ts-btn--icon" href="{{ booking_href }}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17"/><path d="M8 3v4"/><path d="M16 3v4"/></svg>
+            Boka ett första samtal
+          </a>
+          <a class="ts-btn ts-btn--ghost" href="tel:+46762159919">{{ config.extra.phone }}</a>
           <a class="ts-btn ts-btn--ghost" href="mailto:{{ config.extra.email }}">{{ config.extra.email }}</a>
           <a class="ts-btn ts-btn--ghost ts-btn--icon" href="https://www.instagram.com/sense.terapi/" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg>

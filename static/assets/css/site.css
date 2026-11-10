@@ -749,7 +749,49 @@ h1.ts-wordmark { font-size: clamp(44px, 7vw, 76px); }
 .ts-grid--priced .ts-card p { margin-bottom: var(--space-4); }
 .ts-grid--priced .ts-card__price { border-top: 1px solid var(--hairline); }
 
-/* Icon inside a button (Instagram) */
+/* Booking card (Sense Terapi): how a first session is booked */
+.ts-book {
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  border-top: 3px solid var(--bbic-rose);
+}
+.ts-book h3 { font-size: 24px; margin-bottom: var(--space-4); }
+.ts-book__steps {
+  list-style: none;
+  counter-reset: book;
+  padding: 0;
+  margin: 0 0 var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+}
+.ts-book__steps li {
+  counter-increment: book;
+  position: relative;
+  padding-left: 44px;
+  font-size: 16px;
+  color: var(--ink-soft);
+}
+.ts-book__steps li::before {
+  content: counter(book);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-pill);
+  background: #f7e5e2;
+  color: var(--bbic-rose-ink);
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ts-book__steps strong { color: var(--ink); font-weight: 600; }
+.ts-card .ts-book__note { margin-top: var(--space-4); font-size: 14px; color: var(--earth); }
+.ts-book__note a { color: inherit; text-decoration: underline; white-space: nowrap; }
+
+/* Icon inside a button (Instagram, booking) */
 .ts-btn--icon { display: inline-flex; align-items: center; gap: 8px; }
 .ts-btn--icon svg { flex: none; }
 
