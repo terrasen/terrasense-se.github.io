@@ -1,0 +1,31 @@
+#!/bin/sh
+# Runs the Zola version this site is built with, downloading it into
+# .tools/ (git-ignored) on first use. No Homebrew, no sudo, no prompts.
+#
+#   scripts/zola build     build into public/
+#   scripts/zola serve     preview at http://127.0.0.1:1111
+#   scripts/zola check     build and check internal links
+#
+# To upgrade Zola, change VERSION and run `scripts/zola build`.
+set -eu
+
+VERSION=0.23.6
+
+root=$(cd "$(dirname "$0")/.." && pwd)
+case "$(uname -s)-$(uname -m)" in
+  Darwin-arm64) target=aarch64-apple-darwin ;;
+  Darwin-x86_64) target=x86_64-apple-darwin ;;
+  Linux-x86_64) target=x86_64-unknown-linux-gnu ;;
+  *) echo "scripts/zola: no Zola download for $(uname -sm)" >&2; exit 1 ;;
+esac
+
+dir="$root/.tools/zola-$VERSION"
+if [ ! -x "$dir/zola" ]; then
+  echo "scripts/zola: downloading Zola $VERSION ($target)" >&2
+  mkdir -p "$dir"
+  curl -fsSL "https://github.com/getzola/zola/releases/download/v$VERSION/zola-v$VERSION-$target.tar.gz" \
+    | tar -xz -C "$dir" zola
+fi
+
+cd "$root"
+exec "$dir/zola" "$@"
