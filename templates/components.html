@@ -1,7 +1,0 @@
-{#- The first paragraph of a post as plain text, cut at `length` characters
-    with "..." the way Jekyll's excerpts were. -#}
-{% component excerpt(page, length, oneline=false) -%}
-{%- set text = page.content | split(pat="</p>") | first | striptags | trim -%}
-{%- if oneline %}{% set text = text | replace(from="\n", to="") %}{% endif -%}
-{%- if text | length > length %}{{ text | truncate(length=length - 3, end="...") | safe }}{% else %}{{ text | safe }}{% endif -%}
-{%- endcomponent excerpt %}
